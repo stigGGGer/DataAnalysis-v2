@@ -55,15 +55,17 @@ class Calculate(QThread):
 
     def run(self):
         try:
+            #Петров
             if self.algorithm == "Nearest_Neighbors":
                  self.result = Nearest_Neighbors(self.table,self.target,self.parametrs)
+            #Кочетков/Петров
             elif self.algorithm == "Agglomerative":
                  self.result = Agglomerative_Clustering(self.table,self.parametrs)
             # Великов - кластеризация     
             elif self.algorithm == "Affinity_Propagation":
                  self.result = Affinity_Propagation(self.table, self.parametrs)
 
-            # Великов - классификация
+            # Великов/Кочетков - классификация
             elif self.algorithm == "SVM":
                  self.result = mySVM(self.table,self.target,self.parametrs)
 
