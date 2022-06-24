@@ -222,8 +222,8 @@
       <widget class="QGroupBox" name="SVM">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>110</y>
+         <x>40</x>
+         <y>80</y>
          <width>161</width>
          <height>131</height>
         </rect>
@@ -290,8 +290,8 @@
       <widget class="QGroupBox" name="Affinity_Propagation">
        <property name="geometry">
         <rect>
-         <x>100</x>
-         <y>100</y>
+         <x>280</x>
+         <y>50</y>
          <width>161</width>
          <height>141</height>
         </rect>
@@ -373,11 +373,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
         <property name="minimum">
          <double>0.500000000000000</double>
         </property>
         <property name="maximum">
          <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
         </property>
         <property name="value">
          <double>0.500000000000000</double>
@@ -519,8 +525,8 @@
       <widget class="QGroupBox" name="OPTICS">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>20</y>
+         <x>40</x>
+         <y>0</y>
          <width>151</width>
          <height>141</height>
         </rect>
@@ -634,8 +640,8 @@
       <widget class="QGroupBox" name="K_Means">
        <property name="geometry">
         <rect>
-         <x>260</x>
-         <y>80</y>
+         <x>30</x>
+         <y>20</y>
          <width>161</width>
          <height>91</height>
         </rect>
@@ -703,9 +709,9 @@
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>110</y>
+         <y>80</y>
          <width>171</width>
-         <height>161</height>
+         <height>111</height>
         </rect>
        </property>
        <property name="title">

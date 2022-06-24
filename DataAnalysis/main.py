@@ -460,7 +460,7 @@ class Canvas(QMainWindow):
        elif self.thread.algorithm == "Affinity_Propagation":
            parametrs.append(self.ui.comboBox_11.currentText())
            parametrs.append(self.ui.spinBox_3.value())
-           parametrs.append(self.ui.doubleSpinBox_2.value())
+           #parametrs.append(self.ui.doubleSpinBox_2.value())
            parametrs.append(self.ui.doubleSpinBox_3.value())
        elif self.thread.algorithm == "OPTICS":
            parametrs.append(self.ui.spinBox_4.value())
