@@ -384,22 +384,23 @@ class Canvas(QMainWindow):
 
     def GetY(self,y):
         df = y.drop_duplicates()
+        t = y.copy()
 
         if df.dtype == np.int64:
             if df.sum() == (len(df)-1)*len(df)/2:
-                return y
+                return t
         a = 0
         k = 0
-        for i in y.items():
+        for i in t.items():
             for j in df.items():
                if i[1]==j[1]:
-                  y.iat[k] = a
+                  t.iat[k] = a
                   break
                a=a+1
             k=k+1
             a = 0
-        y = pd.to_numeric(y)
-        return y
+        t = pd.to_numeric(y)
+        return t
 
 
     def Launch(self):  
