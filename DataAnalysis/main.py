@@ -156,7 +156,7 @@ class Canvas(QMainWindow):
             return
         try:
           self.ClearAllFillingData()
-          self.dataset = pd.read_csv(self.path,sep=";",encoding = "ISO-8859-1")  
+          self.dataset = pd.read_csv(self.path,sep=";",decimal = ",",encoding = "ISO-8859-1")
           self.ui.tbNameFile.setText(Path(self.path).name)
           self.ui.tbPath.setText(self.path)
           self.FillModel()
@@ -490,7 +490,7 @@ class Canvas(QMainWindow):
 
          if path!="":
              try:
-                self.thread.result.to_csv(path , index = False)
+                self.thread.result.to_csv(path ,sep=';',decimal=",", index = False)
                 QMessageBox.about(self, "Уведомление!", "Файл успешно сохранен!")
              except Exception as err:
                 QMessageBox.about(self, "Ошибка!", "Сохранить файл не удалось!\n"+str(err))  
