@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\cortex_nuclear.csv" />
+    <Content Include="data\Data_User_Modeling_Dataset_Hamdi Tolga KAHRAMAN.csv" />
     <Content Include="form.ui" />
     <Content Include="data\iris.csv" />
   </ItemGroup>
