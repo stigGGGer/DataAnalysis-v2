@@ -1,9 +1,11 @@
 import numpy as np
 from enum import Enum
+import pandas as pd
 from sklearn.cluster import KMeans
 
     
 def K_Means(table, parametrs):
-    kmeans = KMeans(n_clusters=parametrs[0], random_state=parametrs[1]).fit(table)    
-    return table.assign(Y_Pred=kmeans.labels_)
+    kmeans = KMeans(n_clusters=parametrs[0], random_state=parametrs[1]).fit(table) 
+    Y_preds = pd.DataFrame(data = kmeans.labels_, columns = ["Y_Pred"])
+    return Y_preds
 
