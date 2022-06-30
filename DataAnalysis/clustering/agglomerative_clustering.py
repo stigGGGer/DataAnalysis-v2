@@ -1,4 +1,5 @@
 from enum import Enum
+import pandas as pd
 from sklearn.cluster import AgglomerativeClustering 
 
 class AffinityType(Enum):
@@ -18,5 +19,5 @@ class LinkageType(Enum):
 
 def Agglomerative_Clustering(table,parametrs):
     clustering = AgglomerativeClustering(n_clusters=parametrs[1], affinity=parametrs[2], linkage=parametrs[0])
-    Y_preds = clustering.fit_predict(X=table)
-    return   table.assign(Y_Pred=Y_preds)
+    Y_preds = pd.DataFrame(data = clustering.fit_predict(X=table), columns = ["Y_Pred"])
+    return   Y_preds

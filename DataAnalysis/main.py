@@ -6,6 +6,7 @@ import sys
 from PyQt5.QtCore import Qt,QThread, pyqtSignal
 
 import numpy as np
+import openpyxl
 
 # метрики
 from sklearn.metrics import confusion_matrix,accuracy_score,precision_score,recall_score,f1_score,mean_absolute_error,classification_report
@@ -156,8 +157,24 @@ class Canvas(QMainWindow):
             return
         try:
           self.ClearAllFillingData()
-          self.dataset = pd.read_csv(self.path,sep=";",decimal = ",",encoding = "ISO-8859-1")
-          self.ui.tbNameFile.setText(Path(self.path).name)
+          p = Path(self.path)
+
+          if p.suffix == ".csv":
+              self.dataset = pd.read_csv(self.path,sep=";",decimal = ".",encoding = "ISO-8859-1")  
+          elif p.suffix == ".xlsx":
+              self.dataset = pd.read_excel(self.path)  
+          else:
+             raise Exception("Ошибка! Неверное расширение!")    
+
+          # меняем запятую на точку (если есть) иначе будут проблемы
+          self.dataset = self.dataset.astype(str).apply(lambda x: x.str.replace(',','.', regex=True))
+          # преобразуем из str обратно в float
+          self.dataset  = self.dataset.apply(pd.to_numeric, errors='ignore')# coerce
+
+          # если в dataset есть столбцы с именем Y_Pred, то переименуем их
+          self.dataset.rename(columns={'Y_Pred': 'Y_Pred.0'}, inplace=True)
+
+          self.ui.tbNameFile.setText(p.name)
           self.ui.tbPath.setText(self.path)
           self.FillModel()
           self.FillDataSet()
@@ -166,7 +183,7 @@ class Canvas(QMainWindow):
           self.ui.buttonMetrics.setEnabled(True)
         except Exception as err:
           self.ClearAllFillingData()
-          QMessageBox.about(self, "Ошибка!", "Не удалось открыть файл!\n"+str(err))       
+          QMessageBox.about(self, "Ошибка!", "Не удалось открыть файл!\n"+str(err))
 
 
     def FillDataSet(self):
@@ -251,8 +268,8 @@ class Canvas(QMainWindow):
 
 
     def FillModel(self):
-        self.ui.cbModel.addItem('Классификация')
-        self.ui.cbModel.addItem('Кластеризация')    
+        self.ui.cbModel.addItem('Кластеризация')
+        self.ui.cbModel.addItem('Классификация')    
         self.SwitchModel()
 
 
@@ -486,11 +503,20 @@ class Canvas(QMainWindow):
 
 
     def CopyToExcel(self):
-         path = QFileDialog.getSaveFileName(self, 'Выберите файл',filter = "Excel (*.csv)")[0]
+         path = QFileDialog.getSaveFileName(self, 'Выберите файл',filter = "(*.xlsx)")[0]
 
          if path!="":
              try:
-                self.thread.result.to_csv(path ,sep=';',decimal=",", index = False)
+                data = None
+
+                if self.ui.cbModel.currentText()=="Кластеризация":
+                   data = pd.concat([self.thread.table, self.thread.result], axis=1).copy()
+                else: 
+                   data = self.thread.result.copy()
+
+                data = data.astype(str).apply(lambda x: x.str.replace('.', ',', regex=True))
+                data.to_excel(path, index=False)
+
                 QMessageBox.about(self, "Уведомление!", "Файл успешно сохранен!")
              except Exception as err:
                 QMessageBox.about(self, "Ошибка!", "Сохранить файл не удалось!\n"+str(err))  
@@ -498,7 +524,7 @@ class Canvas(QMainWindow):
 
 
     def FillSwap(self):
-        countClusters = len(self.thread.result["Y_Pred"].drop_duplicates())
+        countClusters = len(self.thread.result[self.thread.result.columns[-1]].drop_duplicates())
         self.ui.cbCluster1.addItem("")
         self.ui.cbCluster2.addItem("")
         for i in range(countClusters):
@@ -517,7 +543,7 @@ class Canvas(QMainWindow):
              if self.ui.cbCluster2.currentText() == "":
               raise Exception("Кластер 2 не выбран!") 
 
-             self.thread.result = self.thread.result.replace({'Y_Pred':{int(self.ui.cbCluster1.currentText()):int(self.ui.cbCluster2.currentText()), int(self.ui.cbCluster2.currentText()):int(self.ui.cbCluster1.currentText())}})
+             self.thread.result = self.thread.result.replace({self.thread.result.columns[-1]:{int(self.ui.cbCluster1.currentText()):int(self.ui.cbCluster2.currentText()), int(self.ui.cbCluster2.currentText()):int(self.ui.cbCluster1.currentText())}})
 
              self.figureChart.clear()
              self.canvasChart.draw()
