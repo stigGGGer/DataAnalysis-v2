@@ -382,6 +382,7 @@ class Canvas(QMainWindow):
              list.clear()
              mat_con = confusion_matrix(Ytrue,Ypred)
 
+             # Гуляев - новые метрики (+ для кластеризации)
              list.append("Accuracy: "+str(round(accuracy_score(Ytrue,Ypred),3)))
              list.append("Precision: "+str(round(precision_score(Ytrue,Ypred, average='weighted',zero_division=0),3)))
              list.append("Recall: "+str(round(recall_score(Ytrue,Ypred, average='weighted',zero_division=0),3)))
@@ -547,25 +548,25 @@ class Canvas(QMainWindow):
            parametrs.append(self.ui.spinBox_8.value())
            parametrs.append(self.ui.spinBox_9.value())
        elif self.thread.algorithm == "Mean_Shift":
-           parametrs.append(self.MS_bd.value())
+           parametrs.append(self.ui.MS_bd.value())
        elif self.thread.algorithm == "myBirch":
-           parametrs.append(self.Birch_nc.value())
+           parametrs.append(self.ui.Birch_nc.value())
        elif self.thread.algorithm == "Random_Forest":
-           parametrs.append(self.RF_ts.value())
-           parametrs.append(self.RF_md.value())
-           parametrs.append(self.RF_rs.value())
-       elif self.thread.algorithm == "Random_Forest":
-           parametrs.append(self.NB_ts.value())
-           parametrs.append(self.NB_rs.value())
+           parametrs.append(self.ui.RF_ts.value())
+           parametrs.append(self.ui.RF_md.value())
+           parametrs.append(self.ui.RF_rs.value())
+       elif self.thread.algorithm == "N_Byes":
+           parametrs.append(self.ui.NB_ts.value())
+           parametrs.append(self.ui.NB_rs.value())
        elif self.thread.algorithm == "Spectral":
-           parametrs.append(self.SCL_ncl.value())
-           parametrs.append(self.SCL_asgls.currentText())
-           parametrs.append(self.SCL_rs.value())
+           parametrs.append(self.ui.SCL_ncl.value())
+           parametrs.append(self.ui.SCL_asgls.currentText())
+           parametrs.append(self.ui.SCL_rs.value())
        elif self.thread.algorithm == "D_Tree":
-           parametrs.append(self.DT_RS.value())
+           parametrs.append(self.ui.DT_RS.value())
        elif self.thread.algorithm == "DBScan":
-           parametrs.append(self.DBScan_eps.value())
-           parametrs.append(self.DBScan_ms.value())
+           parametrs.append(self.ui.DBScan_eps.value())
+           parametrs.append(self.ui.DBScan_ms.value())
        return parametrs 
 
 
@@ -635,6 +636,7 @@ class Canvas(QMainWindow):
         self.ui.cbTarget.activated.connect(self.SwitchTarget)
         self.ui.buttonMetrics.clicked.connect(self.CalculateMetrics)
 
+    # Заполняем comboBox перечислениями,если они есть для алгоритма
     def FillComboBox(self):
         for i in AffinityType:
             self.ui.comboBox_10.addItem(i.name)
@@ -653,6 +655,9 @@ class Canvas(QMainWindow):
 
         for i in Gamma:
             self.ui.comboBox_13.addItem(i.name)
+
+        for i in AssignLabels:
+            self.ui.SCL_asgls.addItem(i.name)
 
 
     def CreateCharts(self):

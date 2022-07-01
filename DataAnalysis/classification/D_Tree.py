@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 
 def D_Tree(table,target,parametrs):
-    x_train, x_test, y_train, y_test = train_test_split(table, target, test_size=80)
+    x_train, x_test, y_train, y_test = train_test_split(table, target, test_size=parametrs[0])
     clf = DecisionTreeClassifier(random_state=0)
     clf.fit(x_train, y_train)
     #y_pred = cross_val_score(clf, table, target, cv=10)
