@@ -1638,7 +1638,7 @@
                   </rect>
                 </property>
                 <property name="text">
-                  <string>Random_State</string>
+                  <string>Test_size</string>
                 </property>
               </widget>
               <widget class="QSpinBox" name="DT_RS">
@@ -1661,7 +1661,7 @@
                   </rect>
                 </property>
                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;random_state - Управляет случайностью оценщика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;test_size - Размерность выборки тестовых данных.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
               </widget>
             </widget>
