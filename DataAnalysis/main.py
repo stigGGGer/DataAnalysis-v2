@@ -7,19 +7,28 @@ from PyQt5.QtCore import Qt,QThread, pyqtSignal
 
 import numpy as np
 import openpyxl
+import time
 
 # метрики
 from sklearn.metrics import confusion_matrix,accuracy_score,precision_score,recall_score,f1_score,mean_absolute_error,classification_report
+from sklearn import metrics
 
 # алгоритмы и средство визуализации
 from classification.k_nearest_neighbors import *
 from classification.GaussianProcesses import*
 from classification.mySGDClassifier import *
 from classification.SVM import *
+from classification.D_Tree import *
+from classification.N_Byes import *
+from classification.Random_Forest import *
 from clustering.agglomerative_clustering import *
 from clustering.Affinity_Propagation import *
 from clustering.K_Means import *
 from clustering.OPTICS import *
+from clustering.Mean_Shift import *
+from clustering.Spectral import *
+from clustering.DBScan import *
+from clustering.myBirch import *
 from chart.tools import *
 
 from sklearn.model_selection import train_test_split
@@ -85,6 +94,27 @@ class Calculate(QThread):
             #Жендосян - классификация
             elif self.algorithm == "Gaussian_Process":
                  self.result = gaussianProcessClassifier(self.table,self.target,self.parametrs)
+
+            elif self.algorithm == "Mean_Shift":
+                 self.result = Mean_Shift(self.table, self.parametrs)
+
+            elif self.algorithm == "Spectral":
+                 self.result = Spectral(self.table, self.parametrs)
+
+            elif self.algorithm == "myBirch":
+                 self.result = myBirch(self.table, self.parametrs)
+
+            elif self.algorithm == "DBScan":
+                 self.result = DBScan(self.table, self.parametrs)
+            
+            elif self.algorithm == "D_Tree":
+                 self.result = D_Tree(self.table,self.target,self.parametrs)
+
+            elif self.algorithm == "N_Byes":
+                 self.result = N_Byes(self.table,self.target,self.parametrs)
+
+            elif self.algorithm == "Random_Forest":
+                 self.result = Random_Forest(self.table,self.target,self.parametrs)
 
             self.mySignal.emit('Success')                    
         except Exception as err:
@@ -210,6 +240,10 @@ class Canvas(QMainWindow):
             self.ui.cbAlgorithm.addItem('SGDClassifier')
             self.ui.cbAlgorithm.addItem('SVM')
             self.ui.cbAlgorithm.addItem('Gaussian_Process')
+            self.ui.cbAlgorithm.addItem('D_Tree')
+            self.ui.cbAlgorithm.addItem('N_Byes')
+            self.ui.cbAlgorithm.addItem('Random_Forest')
+
             ###
         elif self.ui.cbModel.currentText() == "Кластеризация":
             self.ui.cbTarget.hide()
@@ -218,6 +252,10 @@ class Canvas(QMainWindow):
             self.ui.cbAlgorithm.addItem('Affinity_Propagation')
             self.ui.cbAlgorithm.addItem('OPTICS')
             self.ui.cbAlgorithm.addItem('K_Means')
+            self.ui.cbAlgorithm.addItem('Mean_Shift')
+            self.ui.cbAlgorithm.addItem('Spectral')
+            self.ui.cbAlgorithm.addItem('myBirch')
+            self.ui.cbAlgorithm.addItem('DBScan')
             ###        
         self.SwitchAlgorithm()
 
@@ -345,7 +383,12 @@ class Canvas(QMainWindow):
              list.append("Recall: "+str(round(recall_score(Ytrue,Ypred, average='weighted',zero_division=0),3)))
              list.append("Mean absolute error: "+str(round(mean_absolute_error(Ytrue,Ypred),3)))
              list.append("F1: "+str(round(f1_score(Ytrue,Ypred, average='weighted',zero_division=0),3)))
-             
+             list.append("Оценка\nпроизводительности\n----------")
+             list.append("Индекс Рэнда: "+str(round(metrics.adjusted_rand_score(Ytrue, Ypred), 3)))
+             list.append("Взаимная\nинформация: "+str(round(metrics.adjusted_mutual_info_score(Ytrue, Ypred), 3)))
+             list.append("Полнота: "+str(round(metrics.completeness_score(Ytrue, Ypred), 3)))
+             list.append("V-мера: "+str(round(metrics.v_measure_score(Ytrue, Ypred), 3)))             
+
              self.figureMetrics.clear() # чистим график
              ax = self.figureMetrics.add_subplot()
              ax.set_title("Матрица неточности")            
@@ -502,25 +545,26 @@ class Canvas(QMainWindow):
        return parametrs 
 
 
+     
     def CopyToExcel(self):
-         path = QFileDialog.getSaveFileName(self, 'Выберите файл',filter = "(*.xlsx)")[0]
+        path = QFileDialog.getSaveFileName(self, 'Выберите файл',filter = "(*.xlsx)")[0]
 
-         if path!="":
-             try:
-                data = None
+        if path!="":
+            try:
+               data = None
 
-                if self.ui.cbModel.currentText()=="Кластеризация":
-                   data = pd.concat([self.thread.table, self.thread.result], axis=1).copy()
-                else: 
-                   data = self.thread.result.copy()
+               if self.ui.cbModel.currentText()=="Кластеризация":
+                  data = pd.concat([self.thread.table, self.thread.result], axis=1).copy()
+               else:
+                  data = self.thread.result.copy()
 
-                data = data.astype(str).apply(lambda x: x.str.replace('.', ',', regex=True))
-                data.to_excel(path, index=False)
+               #data = data.astype(str).apply(lambda x: x.str.replace(',', '.', regex=True))
+               #data = data.apply(pd.to_numeric, errors='ignore')# coerce
+               data.to_excel(path, index=False)
 
-                QMessageBox.about(self, "Уведомление!", "Файл успешно сохранен!")
-             except Exception as err:
-                QMessageBox.about(self, "Ошибка!", "Сохранить файл не удалось!\n"+str(err))  
-
+               QMessageBox.about(self, "Уведомление!", "Файл успешно сохранен!")
+            except Exception as err:
+               QMessageBox.about(self, "Ошибка!", "Сохранить файл не удалось!\n"+str(err))
 
 
     def FillSwap(self):

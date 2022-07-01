@@ -25,11 +25,20 @@
     <Compile Include="chart\tools.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classification\D_Tree.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="classification\GaussianProcesses.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classification\k_nearest_neighbors.py" />
     <Compile Include="classification\mySGDClassifier.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classification\N_Byes.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classification\Random_Forest.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classification\SVM.py">
@@ -39,10 +48,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="clustering\agglomerative_clustering.py" />
+    <Compile Include="clustering\myBirch.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clustering\DBScan.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="clustering\K_Means.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="clustering\Mean_Shift.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="clustering\OPTICS.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clustering\Spectral.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
