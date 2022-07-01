@@ -65,12 +65,14 @@ class Calculate(QThread):
 
     def run(self):
         try:
-            #Петров
+            # Петров
             if self.algorithm == "Nearest_Neighbors":
                  self.result = Nearest_Neighbors(self.table,self.target,self.parametrs)
-            #Кочетков/Петров
+
+            # Кочетков/Петров
             elif self.algorithm == "Agglomerative":
                  self.result = Agglomerative_Clustering(self.table,self.parametrs)
+
             # Великов - кластеризация     
             elif self.algorithm == "Affinity_Propagation":
                  self.result = Affinity_Propagation(self.table, self.parametrs)
@@ -91,10 +93,12 @@ class Calculate(QThread):
             elif self.algorithm == "K_Means":
                  self.result = K_Means(self.table, self.parametrs)
 
-            #Жендосян - классификация
+            # Жендосян - классификация
             elif self.algorithm == "Gaussian_Process":
                  self.result = gaussianProcessClassifier(self.table,self.target,self.parametrs)
 
+            
+            # Базовые методы (Великов, Гуляев, Минаков, Чугунов / 01.07.2022)     
             elif self.algorithm == "Mean_Shift":
                  self.result = Mean_Shift(self.table, self.parametrs)
 
@@ -542,6 +546,26 @@ class Canvas(QMainWindow):
            parametrs.append(self.ui.doubleSpinBox_9.value())
            parametrs.append(self.ui.spinBox_8.value())
            parametrs.append(self.ui.spinBox_9.value())
+       elif self.thread.algorithm == "Mean_Shift":
+           parametrs.append(self.MS_bd.value())
+       elif self.thread.algorithm == "myBirch":
+           parametrs.append(self.Birch_nc.value())
+       elif self.thread.algorithm == "Random_Forest":
+           parametrs.append(self.RF_ts.value())
+           parametrs.append(self.RF_md.value())
+           parametrs.append(self.RF_rs.value())
+       elif self.thread.algorithm == "Random_Forest":
+           parametrs.append(self.NB_ts.value())
+           parametrs.append(self.NB_rs.value())
+       elif self.thread.algorithm == "Spectral":
+           parametrs.append(self.SCL_ncl.value())
+           parametrs.append(self.SCL_asgls.currentText())
+           parametrs.append(self.SCL_rs.value())
+       elif self.thread.algorithm == "D_Tree":
+           parametrs.append(self.DT_RS.value())
+       elif self.thread.algorithm == "DBScan":
+           parametrs.append(self.DBScan_eps.value())
+           parametrs.append(self.DBScan_ms.value())
        return parametrs 
 
 
