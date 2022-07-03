@@ -528,6 +528,7 @@ class Canvas(QMainWindow):
            parametrs.append(self.ui.spinBox_3.value())
            parametrs.append(self.ui.doubleSpinBox_2.value())
            parametrs.append(self.ui.doubleSpinBox_3.value())
+           parametrs.append(self.ui.spinBox_10.value())
        elif self.thread.algorithm == "OPTICS":
            parametrs.append(self.ui.spinBox_4.value())
            parametrs.append(self.ui.doubleSpinBox_4.value())
