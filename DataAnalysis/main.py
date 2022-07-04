@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5 import uic
 import sys
 
-from PyQt5.QtCore import Qt,QThread, pyqtSignal
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, QTimer
 
 import numpy as np
 import openpyxl
@@ -62,7 +62,6 @@ class Calculate(QThread):
         self.result = None # результат
         self.parametrs = None    # параметры алгоритма 
 
-
     def run(self):
         try:
             # Петров
@@ -120,7 +119,8 @@ class Calculate(QThread):
             elif self.algorithm == "Random_Forest":
                  self.result = Random_Forest(self.table,self.target,self.parametrs)
 
-            self.mySignal.emit('Success')                    
+            self.mySignal.emit('Success')
+            #Canvas.timer.stop()
         except Exception as err:
             self.mySignal.emit(str(err))                          
 
@@ -140,7 +140,10 @@ class Canvas(QMainWindow):
         self.canvasMetrics = None   
         self.dataset = None # исходная таблица
         self.ConfigureInterface() # запуск первичной настройки различных параметров
-
+              
+        # Таймер
+        self.timer = QTimer(self)
+        self.time = 0
 
     def ClearAllFillingData(self):
         self.SwitchButtonsEnabled(False)
@@ -236,7 +239,7 @@ class Canvas(QMainWindow):
 
     def SwitchModel(self):
         self.ui.cbAlgorithm.clear()  
-        self.ui.cbAlgorithm.addItem("")
+        #self.ui.cbAlgorithm.addItem("")
         if self.ui.cbModel.currentText() == "Классификация":
             self.ui.cbTarget.show()
             self.ui.label_9.show()
@@ -347,6 +350,7 @@ class Canvas(QMainWindow):
     # вызывается после завершения вычислений
     def Result(self, status):
             self.SwitchEnabledAll(True)
+            self.timer.stop()
             try:
                if status == 'Success':
                 self.ui.tbStatus.setText("Успех!") 
@@ -507,9 +511,19 @@ class Canvas(QMainWindow):
                  return
         
         self.thread.parametrs = self.SetParametrs()
-        self.SwitchEnabledAll(False)
+        self.SwitchEnabledAll(False)                                    
+        self.timer.timeout.connect(self.showTime)
+        self.timer.start(1)
         self.thread.start()
 
+
+    def showTime(self):  
+        self.time += 1
+        self.settimer(self.time)
+
+    def settimer(self, int):
+        self.time = int
+        self.ui.timeViever.display(self.time)
 
     def SetParametrs(self):
        parametrs = []
@@ -527,7 +541,7 @@ class Canvas(QMainWindow):
            parametrs.append(self.ui.comboBox_11.currentText())
            parametrs.append(self.ui.spinBox_3.value())
            parametrs.append(self.ui.doubleSpinBox_2.value())
-           parametrs.append(self.ui.doubleSpinBox_3.value())
+           #parametrs.append(self.ui.doubleSpinBox_3.value())
            parametrs.append(self.ui.spinBox_10.value())
        elif self.thread.algorithm == "OPTICS":
            parametrs.append(self.ui.spinBox_4.value())
