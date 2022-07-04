@@ -511,7 +511,9 @@ class Canvas(QMainWindow):
                  return
         
         self.thread.parametrs = self.SetParametrs()
-        self.SwitchEnabledAll(False)                                    
+        self.SwitchEnabledAll(False)
+        self.time = 0
+        self.timer = QTimer(self)                                    
         self.timer.timeout.connect(self.showTime)
         self.timer.start(1)
         self.thread.start()
