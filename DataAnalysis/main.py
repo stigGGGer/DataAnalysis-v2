@@ -236,7 +236,7 @@ class Canvas(QMainWindow):
 
     def SwitchModel(self):
         self.ui.cbAlgorithm.clear()  
-        self.ui.cbAlgorithm.addItem("")
+        #self.ui.cbAlgorithm.addItem("")
         if self.ui.cbModel.currentText() == "Классификация":
             self.ui.cbTarget.show()
             self.ui.label_9.show()
@@ -247,7 +247,7 @@ class Canvas(QMainWindow):
             self.ui.cbAlgorithm.addItem('D_Tree')
             self.ui.cbAlgorithm.addItem('N_Byes')
             self.ui.cbAlgorithm.addItem('Random_Forest')
-
+            #self.ui.cbAlgorithm.currentIndex = 0
             ###
         elif self.ui.cbModel.currentText() == "Кластеризация":
             self.ui.cbTarget.hide()
@@ -260,6 +260,7 @@ class Canvas(QMainWindow):
             self.ui.cbAlgorithm.addItem('Spectral')
             self.ui.cbAlgorithm.addItem('myBirch')
             self.ui.cbAlgorithm.addItem('DBScan')
+            #self.ui.cbAlgorithm.currentIndex = 0
             ###        
         self.SwitchAlgorithm()
 
