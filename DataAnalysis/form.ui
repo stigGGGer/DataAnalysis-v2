@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1074</width>
-    <height>668</height>
+    <height>679</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -202,14 +202,14 @@
          <string>Статус вычислений</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="4" column="1">
+         <item row="5" column="1">
           <widget class="QPushButton" name="buttonLaunch">
            <property name="text">
             <string>Запустить</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="5" column="0">
           <widget class="QPushButton" name="buttonCopyToExcel">
            <property name="text">
             <string>Копировать в Excel</string>
@@ -240,7 +240,18 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLCDNumber" name="timeViever"/>
+          <widget class="QLCDNumber" name="timeViever">
+           <property name="font">
+            <font>
+             <pointsize>4</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="smallDecimalPoint">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -810,7 +821,7 @@ p, li { white-space: pre-wrap; }
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>300</y>
+         <y>280</y>
          <width>431</width>
          <height>291</height>
         </rect>
