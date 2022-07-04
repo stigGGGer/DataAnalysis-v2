@@ -36,72 +36,6 @@
     </sizepolicy>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="3">
-     <widget class="QGroupBox" name="groupBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="title">
-       <string>Данные</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="1" colspan="2">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Имя файла:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Путь к файлу:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QLabel" name="tbNameFile">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="buttonReference">
-         <property name="text">
-          <string>Справка</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QTextEdit" name="tbPath">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarAsNeeded</enum>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="buttonOpenFile">
-         <property name="text">
-          <string>Открыть файл</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
     <item row="1" column="0" rowspan="2">
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -257,6 +191,72 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="0" column="0" colspan="3">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Данные</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1" colspan="2">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Имя файла:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Путь к файлу:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="tbNameFile">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="buttonReference">
+         <property name="text">
+          <string>Справка</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QTextEdit" name="tbPath">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="buttonOpenFile">
+         <property name="text">
+          <string>Открыть файл</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item row="1" column="1" rowspan="2" colspan="2">
      <widget class="QTabWidget" name="tabWidget">
@@ -551,191 +551,8 @@ p, li { white-space: pre-wrap; }
       </widget>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
+    <item row="3" column="0">
      <widget class="QWidget" name="container" native="true">
-      <widget class="QGroupBox" name="Agglomerative">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>300</y>
-         <width>144</width>
-         <height>92</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <layout class="QFormLayout" name="formLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_14">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which linkage criterion to use. The linkage criterion determines which distance to use between sets of observation. The algorithm will merge the pairs of cluster that minimize this criterion.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘ward’ minimizes the variance of the clusters being merged.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘average’ uses the average of the distances of each observation of the two sets.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘complete’ or ‘maximum’ linkage uses the maximum distances between all observations of the two sets.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘single’ uses the minimum of the distances between all observations of the two sets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>linkage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QComboBox" name="comboBox_9">
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_15">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of clusters to find. It must be None if distance_threshold is not None.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>n_clusters</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QSpinBox" name="spinBox_2">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>1000</number>
-          </property>
-          <property name="value">
-           <number>2</number>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_16">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Metric used to compute the linkage. Can be “euclidean”, “l1”, “l2”, “manhattan”, “cosine”, or “precomputed”. If linkage is “ward”, only “euclidean” is accepted. If “precomputed”, a distance matrix (instead of a similarity matrix) is needed as input for the fit method.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>affinity</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QComboBox" name="comboBox_10"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QGroupBox" name="Nearest_Neighbors">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>280</y>
-         <width>158</width>
-         <height>118</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <layout class="QFormLayout" name="formLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_10">
-          <property name="toolTip">
-           <string>Количество соседей, используемых по умолчанию для запросов kneighbors.</string>
-          </property>
-          <property name="text">
-           <string>n_neighbors:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QSpinBox" name="spinBox">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>1000</number>
-          </property>
-          <property name="value">
-           <number>5</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_11">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Алгоритм, используемый для вычисления ближайших соседей:&lt;/p&gt;&lt;p&gt;‘ball_tree’ будет использовать BallTree &lt;/p&gt;&lt;p&gt;‘kd_tree’ будет использовать KDTree &lt;/p&gt;&lt;p&gt;‘brute’ будет использовать поиск методом перебора.&lt;/p&gt;&lt;p&gt;‘auto’ попытается выбрать наиболее подходящий алгоритм на основе значений, переданных методу fit. &lt;/p&gt;&lt;p&gt;Примечание: установка на разреженный ввод переопределит настройку этого параметра с использованием грубой силы.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>algorithm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QComboBox" name="comboBox_7">
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_12">
-          <property name="toolTip">
-           <string>
-                        Весовая функция, используемая при прогнозировании. Возможные значения:
-
-                        ‘uniform’ : равномерный вес. Все точки в каждой окрестности взвешиваются одинаково.
-
-                        ‘distance’ : взвешивание точек на величину, обратную их расстоянию. в этом случае более близкие соседи точки запроса будут оказывать большее влияние, чем соседи, которые находятся дальше.
-                      </string>
-          </property>
-          <property name="text">
-           <string>weight</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QComboBox" name="comboBox_8"/>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_13">
-          <property name="toolTip">
-           <string>Количество соседей, используемых по умолчанию для запросов kneighbors.</string>
-          </property>
-          <property name="text">
-           <string>test_size</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="doubleSpinBox">
-          <property name="maximum">
-           <double>0.900000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.010000000000000</double>
-          </property>
-          <property name="value">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="QGroupBox" name="SVM">
        <property name="geometry">
         <rect>
@@ -1941,6 +1758,246 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </widget>
+      <widget class="QGroupBox" name="Agglomerative">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>280</y>
+         <width>548</width>
+         <height>228</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_14">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which linkage criterion to use. The linkage criterion determines which distance to use between sets of observation. The algorithm will merge the pairs of cluster that minimize this criterion.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘ward’ minimizes the variance of the clusters being merged.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘average’ uses the average of the distances of each observation of the two sets.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘complete’ or ‘maximum’ linkage uses the maximum distances between all observations of the two sets.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;‘single’ uses the minimum of the distances between all observations of the two sets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>linkage</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="comboBox_9">
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_15">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of clusters to find. It must be None if distance_threshold is not None.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>n_clusters</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="spinBox_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+          <property name="value">
+           <number>2</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_16">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Metric used to compute the linkage. Can be “euclidean”, “l1”, “l2”, “manhattan”, “cosine”, or “precomputed”. If linkage is “ward”, only “euclidean” is accepted. If “precomputed”, a distance matrix (instead of a similarity matrix) is needed as input for the fit method.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>affinity</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="comboBox_10"/>
+        </item>
+        <item row="3" column="0" colspan="2">
+         <widget class="QLabel" name="label_68">
+          <property name="text">
+           <string>linkage – критерий связи. Определяет какое расстояние использовать между наборами наблюдений.
+	“ward” – сводит к минимуму дисперсию объединяемых кластеров.
+	“complete” – использует максимальное расстояние между всеми наблюдениями двух наборов. 
+	“average” – использует среднее значение расстояний каждого наблюдения из двух наборов.
+	“single” – использует минимум расстояний между всеми наблюдениями двух наборов.
+
+n_clusters – количество кластеров.
+
+affinity – метрика используемая для вычисления связи: (Euclidean, l1, l2, Manhattan, cosine, cosine)
+</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="Nearest_Neighbors">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>290</y>
+         <width>381</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="toolTip">
+           <string>Количество соседей, используемых по умолчанию для запросов kneighbors.</string>
+          </property>
+          <property name="text">
+           <string>n_neighbors:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="spinBox">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+          <property name="value">
+           <number>5</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Алгоритм, используемый для вычисления ближайших соседей:&lt;/p&gt;&lt;p&gt;‘ball_tree’ будет использовать BallTree &lt;/p&gt;&lt;p&gt;‘kd_tree’ будет использовать KDTree &lt;/p&gt;&lt;p&gt;‘brute’ будет использовать поиск методом перебора.&lt;/p&gt;&lt;p&gt;‘auto’ попытается выбрать наиболее подходящий алгоритм на основе значений, переданных методу fit. &lt;/p&gt;&lt;p&gt;Примечание: установка на разреженный ввод переопределит настройку этого параметра с использованием грубой силы.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>algorithm</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="comboBox_7">
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_12">
+          <property name="toolTip">
+           <string>
+                        Весовая функция, используемая при прогнозировании. Возможные значения:
+
+                        ‘uniform’ : равномерный вес. Все точки в каждой окрестности взвешиваются одинаково.
+
+                        ‘distance’ : взвешивание точек на величину, обратную их расстоянию. в этом случае более близкие соседи точки запроса будут оказывать большее влияние, чем соседи, которые находятся дальше.
+                      </string>
+          </property>
+          <property name="text">
+           <string>weight</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="comboBox_8"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_13">
+          <property name="toolTip">
+           <string>Количество соседей, используемых по умолчанию для запросов kneighbors.</string>
+          </property>
+          <property name="text">
+           <string>test_size</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="doubleSpinBox">
+          <property name="maximum">
+           <double>0.900000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
+          </property>
+          <property name="value">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" colspan="2">
+         <widget class="QLabel" name="label_24">
+          <property name="text">
+           <string>n_neighbors – количество соседей. По умолчанию 5.
+
+algorithm – алгоритм используемый для вычисления ближайших соседей.
+	“ball_tree” – будет BallTree использовать.
+	“kd_tree” – будет KDTree использовать.
+	“brute” – будет использовать поиск методом перебора.
+	“auto” – попытается выбрать наиболее подходящий алгоритм на основе значений, переданных методу fit.
+
+weight – вес присваиваемый соседям.
+	“uniform” – присваивает одинаковые веса каждому соседу.
+	“distance” –   присваивает веса пропорциональные расстоянию от точки запроса.
+
+test_size – размер тестовой выборки.
+</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <zorder>Agglomerative</zorder>
+      <zorder>SVM</zorder>
+      <zorder>Affinity_Propagation</zorder>
+      <zorder>SGDClassifier</zorder>
+      <zorder>OPTICS</zorder>
+      <zorder>K_Means</zorder>
+      <zorder>Gaussian_Process</zorder>
+      <zorder>Mean_Shift</zorder>
+      <zorder>Spectral</zorder>
+      <zorder>DBScan</zorder>
+      <zorder>D_Tree</zorder>
+      <zorder>N_Byes</zorder>
+      <zorder>Random_Forest</zorder>
+      <zorder>myBirch</zorder>
+      <zorder>Nearest_Neighbors</zorder>
      </widget>
     </item>
    </layout>
