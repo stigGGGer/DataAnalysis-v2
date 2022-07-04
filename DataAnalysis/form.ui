@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1074</width>
-    <height>679</height>
+    <height>1083</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -551,7 +551,7 @@ p, li { white-space: pre-wrap; }
       </widget>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="3" column="0" colspan="2">
      <widget class="QWidget" name="container" native="true">
       <widget class="QGroupBox" name="SVM">
        <property name="geometry">
@@ -637,10 +637,10 @@ p, li { white-space: pre-wrap; }
       <widget class="QGroupBox" name="Affinity_Propagation">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>280</y>
+         <x>60</x>
+         <y>20</y>
          <width>431</width>
-         <height>291</height>
+         <height>351</height>
         </rect>
        </property>
        <property name="title">
@@ -651,8 +651,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>20</x>
           <y>20</y>
-          <width>47</width>
-          <height>13</height>
+          <width>101</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -664,8 +664,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>20</x>
           <y>50</y>
-          <width>47</width>
-          <height>13</height>
+          <width>91</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -718,8 +718,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>20</x>
           <y>110</y>
-          <width>47</width>
-          <height>13</height>
+          <width>91</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -740,13 +740,13 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>140</y>
+          <y>170</y>
           <width>391</width>
-          <height>141</height>
+          <height>171</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;preference - предпочтения для каждой точки — точки с большими&lt;br/&gt;значениями предпочтений с большей вероятностью будут выбраны в качестве образцов.&lt;/p&gt;&lt;p&gt;damping - коэффициент демпфирования. &amp;quot;то степень сохранения&lt;br/&gt;текущего значения относительно поступающих значений&lt;/p&gt;&lt;p&gt;max_iter - максимальное количество итераций алгоритма&lt;/p&gt;&lt;p&gt;affinity - выбор сходства&lt;br/&gt;(precomputed -только для предварительно созданной матрицы близости)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;preference - предпочтения для каждой точки — точки с большими&lt;br/&gt;значениями предпочтений с большей вероятностью будут выбраны в качестве образцов.&lt;/p&gt;&lt;p&gt;damping - коэффициент демпфирования. &amp;quot;то степень сохранения&lt;br/&gt;текущего значения относительно поступающих значений&lt;/p&gt;&lt;p&gt;max_iter - максимальное количество итераций алгоритма&lt;/p&gt;&lt;p&gt;affinity - выбор сходства&lt;br/&gt;(precomputed -только для предварительно созданной матрицы близости)&lt;/p&gt;&lt;p&gt;random_state - генератор псевдослучайных чисел для управления начальным состоянием&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_67">
@@ -754,8 +754,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>20</x>
           <y>80</y>
-          <width>47</width>
-          <height>13</height>
+          <width>91</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -782,6 +782,29 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="value">
          <number>200</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_69">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>140</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>random_state</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinBox_3">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>140</y>
+          <width>271</width>
+          <height>22</height>
+         </rect>
         </property>
        </widget>
       </widget>

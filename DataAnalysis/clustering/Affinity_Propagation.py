@@ -8,6 +8,6 @@ class Affinity(Enum):
     precomputed = "precomputed"
 
 def Affinity_Propagation(table, parametrs):
-    clustering = AffinityPropagation(affinity = parametrs[0], preference = parametrs[1], damping = parametrs[2], max_iter = parametrs[3])
+    clustering = AffinityPropagation(affinity = parametrs[0], random_state=parametrs[1], preference = parametrs[2], damping = parametrs[3], max_iter = parametrs[4])
     Y_preds = pd.DataFrame(data = clustering.fit_predict(table), columns = ["Y_Pred"])
     return Y_preds
